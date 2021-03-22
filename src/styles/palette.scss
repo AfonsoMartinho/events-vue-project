@@ -1,0 +1,36 @@
+
+$mainPalettes:(
+    generic: (
+		background: #ffffff,
+        separator: #D3D7DB
+	),
+    text: (
+        tiny: #979797,
+        small: #979797,
+        medium: #4B536B,
+        big: #4B536B 
+    ),
+    availability: (
+        high: #6AC951,
+        medium: #FFC764,
+        low: #FF5533
+    ),
+    button: (
+        green: #6AC951,
+        greenBorder: rgba(74, 82, 106, 0.35),
+        grey: #F1F1F8,
+        greyBorder: #D3D7DB,
+        red: #F16C64,
+        redBorder: rgba(74, 82, 106, 0.35),
+        blue: #00A9F0,
+        blueBorder: rgb(75, 83, 107, 0.4)
+    ),
+    card: (
+        body: #f1f1f883,
+    )
+
+);
+
+@function palette($palette, $tone:'primary'){
+    @return map-get(map-get($mainPalettes, $palette), $tone);
+}

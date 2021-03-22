@@ -1,0 +1,163 @@
+// BreakPoints
+$breakpoint-laptop: 1800px;
+$breakpoint-desktop: 1350px;
+$breakpoint-tablet-horizontal: 970px;
+$breakpoint-tablet-vertical: 690px;
+$breakpoint-phone: 490px;
+
+// REGARDING Action Button Component
+@media (max-width: $breakpoint-laptop) {
+    .action-buttons-bar-wrapper{
+          .button  {
+              width: 120px;
+              padding: 1rem 0.5rem;
+          }
+    }
+  }
+  
+  // REGARDING Action Button Component
+  @media (max-width: $breakpoint-desktop) {
+    .action-buttons-bar-wrapper{
+          .button  {
+              width: 80px;
+              height: 80px;
+              padding: 0.5rem 0.5rem;
+          }
+    }
+  }
+  // REGARDING Action Button Component
+  @media (max-width: $breakpoint-tablet-horizontal) {
+    .action-buttons-bar-wrapper{
+          .button  {
+              width: 50px;
+              height: 50px;
+              padding: 0.7rem 0;
+  
+              span{
+                  display: none; // removing button text(only icons)
+              }
+              i{
+                  margin: auto;        
+              }
+          }
+    }
+  }
+  // REGARDING Action Button Component
+  @media (max-width: $breakpoint-tablet-horizontal) {
+    .action-buttons-bar-wrapper{
+          .button  {
+              width: 50px;
+              height: 50px;
+              padding: 0.7rem 0;
+  
+              span{
+                  display: none; // removing button text(only icons)
+              }
+              i{
+                  margin: auto;        
+              }
+          }
+    }
+  }
+
+  // REGARDING Action Button Component
+  @media (max-width: $breakpoint-phone) {
+    .action-buttons-bar-wrapper{
+          .button  {
+              width: 37px;
+              height: 37px;
+              padding: 0.4rem 0;
+  
+              span{
+                  display: none; // removing button text(only icons)
+              }
+              i{
+                  margin: auto;        
+              }
+          }
+    }
+  }
+
+// REGARDING EVENT CARD Component
+  @media (max-width: $breakpoint-tablet-horizontal) {
+    .card-top{
+        flex-direction: column;
+    }
+  }
+
+// REGARDING EVENT CARD Component
+  @media (max-width: $breakpoint-tablet-vertical) {
+    .card-bottom{
+        flex-direction: column;
+        justify-content: center;
+        .description, .action-buttons-bar-wrapper{
+            width: 100% !important;
+        }
+    }
+  }
+
+// REGARDING EVENT CARD Component
+@media (max-width: $breakpoint-phone) {
+    .card-top{
+        .left-content{
+            .font-big{
+                font-size: 14pt !important;
+            }
+            .font-tiny{
+                font-size: 8pt !important;
+            }   
+        }
+        .right-content{
+            flex-direction: column;
+            justify-content: center;
+            .availability{
+                display: flex;
+                flex-direction: row !important;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            .toggle{
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                padding: 5px;
+            }
+        }
+    }
+  }
+// REGARDING TOGGLE COMPONENT
+@media (max-width: $breakpoint-phone) {
+    .toggle{
+        position: relative;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+
+        transition: transform 0.5s;
+        span{
+            display: none;
+        }
+
+        &.open{
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+
+        &.close{
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
+    }
+}
+
+// REGARDING EVENTS VIEW
+@media (max-width: $breakpoint-phone) {
+    .events-view-wrapper{
+        .events-top-wrapper{
+            flex-direction: column; 
+            .search-input{
+                width: 100% !important;
+            }
+        }
+    }
+}

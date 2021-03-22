@@ -1,0 +1,97 @@
+@import '@/styles/palette.scss';
+
+// generic-font-style
+/*
+*	This mixin needs one param to generate the proper font styles for the project,
+*	we will need the matching FONT SIZE NAME ($size variable):
+*	
+*	possible $size values:	
+*	1 - tiny
+*	2 - small
+*   3 - medium
+*	4 - big
+*   
+*   If you dont provide a proper font size name you will get a sass error
+*/
+@mixin generic-font-style($size) {
+	@if $size == tiny {
+		color: palette(text,tiny);
+        font-size: 10pt;
+        font-weight: 400; // 400 referes to the REGULAR font-weight name
+
+    } @else  if $size == small {
+		color: palette(text,small);
+        font-size: 12pt;
+        font-weight: 400; // 400 referes to the REGULAR font-weight name
+
+	} @else  if $size == medium {
+		color: palette(text,medium);
+        font-size: 14pt;
+        font-weight: 500; // 500 referes to the MEDIUM font-weight name
+
+	}@else  if $size == big{
+        color: palette(text,big);
+        font-size: 25pt; // I know this font-size isnt according to the pdf design value but according to my calculations this is the correct one ;
+        font-weight: 500; // 500 referes to the MEDIUM font-weight name
+
+	} @else {
+        @error "Unknown font type #{$size}.";
+    }
+}
+
+
+//Adding some classes for texts
+.text{
+    &.font-tiny{
+        @include generic-font-style(tiny)
+    }
+    &.font-small{
+        @include generic-font-style(small)
+    }
+    &.font-medium{
+        @include generic-font-style(medium)
+    }
+    &.font-big{
+        @include generic-font-style(big)
+    }
+}
+
+// Generic BUTTON styles
+// Ovwerwritting some Bottstarp property values
+.btn{
+    
+    &.btn-lg{
+        padding: 0.8rem 2rem; // I overwritted this padding values for the large button just beacase they needed to be bigger
+    }
+
+    &.btn-light{
+        background-color: palette(button,grey);
+        border-color: palette(button, greyBorder);
+    }
+    &.btn-success{
+        background-color: palette(button,green);
+        border-color: palette(button, greenBorder);
+    }
+    &.btn-danger{
+        background-color: palette(button,red);
+        border-color: palette(button, redBorder);
+    }
+    &.btn-primary{
+        background-color: palette(button,blue);
+        border-color: palette(button, blueBorder);
+    }
+    
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    
+    &.toggle{
+        padding-bottom: 1rem;
+    }
+
+    &.wide{
+        width: 200px;
+    }
+}
+
