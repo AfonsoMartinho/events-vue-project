@@ -133,7 +133,9 @@ export default {
         editHandler(){
             //  storing all event data in an Object so if the user cancels the editing we can rollback in the cancelHandler function
             this.previousEventState = JSON.parse(JSON.stringify(this.event));
-            this.isEditing = !this.isEditing // changing the action-buttons-bar state 
+            this.isEditing = true // changing the action-buttons-bar state 
+            // this event is going to close all other action bars with the edit state active so that thje user cant edit 2 events at the same time
+            EventBus.$emit('is-editing-other-event', this.event.id)
         },
         async saveHandler () {
             // creating the payload to send to the store
@@ -167,6 +169,15 @@ export default {
             Object.assign(this.event, this.previousEventState);
             this.isEditing = false
         }
+    },
+    mounted(){
+    // When a card is mounted we listen to the is-edithing-an-event event so that we know if another event card is in edit mode...
+    // if the event triggers this mneans that a card is on edit mode and we need to close all edit modes in all cards except the one that whit the respective  id ...
+    // wee do this in order to not let the user edit two events at the same time  
+    EventBus.$on('is-editing-other-event', (eventId) => {
+            if (this.event.id == eventId) return // if the edit buttoin clicked is of this card dont close it
+            this.isEditing = false // if the edit button clicked is from another card we need to exit edit mode in this one
+        })
     }
 }
 </script>
