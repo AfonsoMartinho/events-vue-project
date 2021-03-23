@@ -1,3 +1,8 @@
+/*
+    Welcome to the STORE
+    In here we take care of the setup of the store and we inport the new moules in the ⬅️ emoji
+*/
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 // EVENTS Module
@@ -17,7 +22,7 @@ export default new Vuex.Store({
     actions: {
 
     },
-    modules: {
+    modules: {//⬅️ 
         eventsModule
 
     }

@@ -1,3 +1,10 @@
+/*
+  WELCOME TO THE EVENTS VIEW
+  In here we render the app-events-list component requesting and fetching the events list data
+  We also have a search input field that filters the events list by name and description with the help of the searchHandler function
+  While the Events List isnt fetched we show a nice bootstrap spinner component instead
+*/
+
 <template>
     <div class="events-view-wrapper">
         <div class="events-top-wrapper">
@@ -42,8 +49,9 @@ export default {
     },
     computed: {
         ...mapGetters('eventsModule', ['getEventsList']),
-        eventsListSearchResults() {// this function will search if the search input value matches or the event name or the event description
-            if(!this.searchQuery) return this.getEventsList
+        // this function will search if the search input value(searchQuery) matches the event name or the event description
+        eventsListSearchResults() {
+            if(!this.searchQuery) return this.getEventsList // if theres no search value render the whole list
             let eventsToDisplay = this.getEventsList.filter(eventFromStore => {
                 let matchingEventName = eventFromStore.name.toLowerCase().includes(this.searchQuery.toLowerCase())
                 let matchingEventDescription = eventFromStore.description.toLowerCase().includes(this.searchQuery.toLowerCase())
@@ -53,10 +61,12 @@ export default {
         }
     },
     methods: {
-        ...mapActions('eventsModule', ['fetchEvents','setEvents']),
+        ...mapActions('eventsModule', ['fetchEvents']),
+        // in here we put all the initial requests we need to fetch all the list data
         getInitialRequests () {
             this.requestEvents()
         },
+        // This function allow us to call the fetchEvents action from the store
         async requestEvents() {
             this.isLoading = true
             try {

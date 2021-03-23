@@ -1,7 +1,13 @@
+/*
+  WELCOME TO THE MAIN APP VIEW
+  In here we render the main components of the website
+*/
 <template>
   <div id="app">
     <app-events/>
+    
     <!-- Toast -->
+    <!-- This gives the user feedback messages (is trigered by the 'show-toast' event bus) -->
 		<app-toast
     v-if="showToast"
     :type="toastType"
@@ -9,6 +15,8 @@
     @closeToast="showToast=false"
     />
 
+    <!-- Error Modal -->
+    <!-- This gives the user feedback main error messages (is trigered by the 'show-error-modal' event bus) -->
     <app-error-modal
     v-if="showModal"
     :header="modalHeader"
@@ -46,18 +54,26 @@ export default {
     }
   },
   methods:{
-  },
-  mounted() {
+    // In here we trigger all the event bussses we whant for the app to be listening to
+    triggerEventBus(){
+      // Show Toast Event Bus 
       EventBus.$on('show-toast', (type, message) => {
+        // Showing toast and sending type and message vars to it
           this.toastMessage = message.toString();
           this.toastType = type.toString();
           this.showToast = true
         })
+      // Show Error Modal Event Bus 
       EventBus.$on('show-error-modal', (header, message) => {
+        // Showing Modal and sending  and header and message vars to it
           this.modalHeader = header.toString();
           this.modalMessage = message.toString();
           this.showModal=true
         })
+    }
+  },
+  mounted() {
+      this.triggerEventBus()
   }
 }
 </script>

@@ -1,3 +1,10 @@
+/*
+  WELCOME TO THE DATE TIME TEXT COMPONENT
+  In here we provide a dynamic element that displays the date, time and duration parsed for a user friendlier enviorment
+  We received two String props (start and end dates) that are parsed by moment.js plugin
+  Then we format the text as a template string
+  if we got the same date but with diferent times we display it in a diferent way!   
+*/
 <template>
     <div class="date-time-text-wrapper text font-tiny">
     <!-- We have 2 possible formatations  for the display of the event date time beacause it can be in different days-->

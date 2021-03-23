@@ -1,3 +1,14 @@
+/*
+  WELCOME TO THE TOAST COMPONENT
+  This component was created to show useful information for the user (for instance when an event was deleted successfuly)
+  All the toast elements are created by bootrap library and I added some transition css effects
+  
+  This component just needs to recive a type and a message properties.
+  The type can be primary secondary success danger warning info light or dark this only changes the Toast color
+  The message property is a String but you can add html tags to it
+  To create a toast send it by EventBus like this example:
+                EventBus.$emit('show-toast', 'success', `O evento <strong>EVENTO 1</strong> foi <strong>eliminado</strong> com sucesso`)
+*/
 <template>
     <transition name="showing-toast" appear>
         <div 
@@ -15,7 +26,7 @@ export default {
         message: String
     },
     created () {
-        setTimeout(() => {
+        setTimeout(() => { // this will close the toast after 2.5s of showing up message
             this.$emit('closeToast')
         }, 2500)
     }

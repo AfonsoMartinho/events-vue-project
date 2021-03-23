@@ -1,0 +1,1 @@
+Feel free to uncomment the app-afonso-playground component in App.vue if you wish to see my playground page.

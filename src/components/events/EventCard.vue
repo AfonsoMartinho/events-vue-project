@@ -1,3 +1,10 @@
+/*
+  WELCOME TO THE EVENT CARD COMPONENT
+  In here we create a card with the help of a event Object prop
+  This Card can expand to show the card-bottom content with more options and details abou the event
+  We also render the action-buttons-bar component that adds buttons to this card.
+  We handle the update and delete functions that send the user data to the store as a payload
+*/
 <template>
     <div class="card-wrapper">
         <div v-if="!isLoading" class="card-top">
@@ -92,11 +99,12 @@ export default {
         }
     },
     computed:{
-        ...mapGetters('eventsModule', ['getEventsList']),
+        ...mapGetters('eventsModule', ['getEventsList'])
     },
     methods: {
         ...mapActions('eventsModule', ['editEvent', 'deleteEvent']),
         async deleteHandler () {
+            // creating the payload to send to the store
             let eventData = {
                 'id': this.event.id,
                 'name': this.event.name,
@@ -108,24 +116,27 @@ export default {
             }
 
             try {
-                this.isLoading = true
-                await this.deleteEvent(eventData)
+                this.isLoading = true // while processing data we show the load card spinner
+                await this.deleteEvent(eventData)// trigger store action and send the payload
                 // creating the toast
-                // sending event to show the toas in App view
+                // sending event to show the succes toast in App view
                 EventBus.$emit('show-toast', 'success', `O evento <strong>${this.event.name}</strong> foi <strong>eliminado</strong> com sucesso`)
             } catch(error) {
+                // sending event to show the error toast in App view
                 EventBus.$emit('show-toast', 'danger', `Ocorreu um <strong>erro</strong> ao eliminar o evento  <strong>${this.event.name}</strong>`)
             } finally {
+                // at the end we hide the spinner and action-buttons-bar goes to its original state
                 this.isLoading = false
                 this.isEditing = false
             }
         },
         editHandler(){
-            //  storing all event data in an Object so if the user cancels the editing we can rollback
+            //  storing all event data in an Object so if the user cancels the editing we can rollback in the cancelHandler function
             this.previousEventState = JSON.parse(JSON.stringify(this.event));
-            this.isEditing = !this.isEditing
+            this.isEditing = !this.isEditing // changing the action-buttons-bar state 
         },
         async saveHandler () {
+            // creating the payload to send to the store
             let eventData = {
                 'id': this.event.id,
                 'name': this.event.name,
@@ -137,26 +148,24 @@ export default {
             }
 
             try {
-                this.isLoading = true
-                await this.editEvent(eventData)
+                this.isLoading = true // while processing data we show the load card spinner
+                await this.editEvent(eventData) // trigger store action and send the payload
+                // sending event to show the error toast in App view
                 EventBus.$emit('show-toast', 'success',  `O evento <strong>${this.event.name}</strong> foi <strong>editado</strong> com sucesso`)
 
             } catch (error){
+                 // sending event to show the error toast in App view
                 EventBus.$emit('show-toast', 'danger', `Ocorreu um <strong>erro</strong> a editar o evento <strong>${this.event.name}</strong>`)
             } finally {
+                // at the end we hide the spinner and action-buttons-bar goes to its original state
                 this.isLoading = false
                 this.isEditing = false
             }
         },
         cancelHandler(){
-            // Now we rollback the event to his previous state
+            // We rollback the event to his previous state and action-buttons-bar goes to its original state
             Object.assign(this.event, this.previousEventState);
             this.isEditing = false
-        },
-        createToast(type,message){
-            this.toastType = type
-            this.toastMessage = message
-            this.showToast = true
         }
     }
 }

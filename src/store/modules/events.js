@@ -1,5 +1,11 @@
+/*
+    EVENTS STORE MODULE
+    in here we syncronize all the events api data with the store  
+*/
+
 import eventsAPI from '@/api/events'
 
+// events state should be an object with total events Number property an events Array
 const state = {
     events: {}
 }
@@ -37,9 +43,6 @@ const actions = {
         const res = await eventsAPI.deleteEvent(payload)
 		context.commit('SET_EVENTS', res.data)
         return res
-    },
-    setEvents: (context,payload) => {
-        context.commit('SET_EVENTS_LIST', payload)
     }
 }
 

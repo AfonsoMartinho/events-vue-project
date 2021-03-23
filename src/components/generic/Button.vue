@@ -1,3 +1,18 @@
+/*
+  WELCOME TO BUTTON COMPONENT
+  A bootrap and font awesome button friendly was created
+  
+  The main div represents a bootstrap button that can be costumized by color and size
+  The color prop allows 'grey','green','red' and 'blue' values
+  The size property allows 'small','medium' and 'large' values
+  You can also pass a isWide BPorpertyy that makes the button wider 
+  
+  The i tag nested in the main div represents the font awesome icon
+  The iconName prop receives the font awesome icon name
+  The iconStyle prop can receive 'solid','regular','light','duotone' and 'brands' font awesome style values
+
+  The text property inserts the button text
+*/
 <template>
     <div 
     class="btn"
@@ -45,7 +60,8 @@ export default {
         }
     },
     computed: {
-        bootstrapSize() {
+        // in here we convert the size prop to the respective bootstrap class
+        bootstrapSize() { 
             let className = ''
             switch (this.size) {
                 case 'small':
@@ -62,6 +78,7 @@ export default {
             }
             return className
         },
+        // in here we convert the size color to the respective bootstrap class
         bootstrapColor() {
             let className = ''
             switch (this.color) {
@@ -82,6 +99,7 @@ export default {
             }
             return className
         },
+        // in here we convert the iconStyle prop to the respective font awesome class
         fontawesomeStyle() {
             let className = ''
             switch (this.iconStyle) {

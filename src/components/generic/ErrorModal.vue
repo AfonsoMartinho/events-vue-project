@@ -1,3 +1,13 @@
+/*
+  WELCOME TO THE ERROR MODAL COMPONENT
+  All the error modal elements are created by bootrap library
+  I just added the@click event so that the parent component can toggle the instance of the modal
+  This component just needs to recive an header and a message properties.
+  this properties will be added to the element in the respective positions
+
+  To create an error message send it by EventBus like this example:
+		EventBus.$emit('show-error-modal', 'desconhecido', 'Algo correu mal, por favor tente mais tarde!')
+*/
 <template>
 <!-- Bootstrap Modal -->
     <div>

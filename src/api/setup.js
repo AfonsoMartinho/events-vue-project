@@ -1,14 +1,16 @@
+/*
+    API SETUP
+    In here we have axios setup
+*/
 import axios from 'axios'
 import constants from '@/assets/constants'
-// import store from '@/store/store'
 import { EventBus } from '@/event-bus.js'
 
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 
 let instance = axios.create({
-    baseURL: constants.BASE_URL,
-    'Authorization': `Bearer ${constants.TOKEN}`
+    baseURL: constants.BASE_URL
 })
 
 // This is the global service interceptor in case you whant to do something in all responses
@@ -17,7 +19,7 @@ instance.interceptors.response.use(config => {
 }, error => {
     if (!error.response) {
         // if theres no response on the error create a global default error modal
-		EventBus.$emit('show-error-modal', 'Desconhecido', 'Algo correu mal, por favor tente mais tarde!')
+		EventBus.$emit('show-error-modal', 'desconhecido', 'Algo correu mal, por favor tente mais tarde!')
 
 		return Promise.reject(error)
 	}

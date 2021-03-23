@@ -1,3 +1,7 @@
+/*
+  WELCOME TO THE EVENTS LIST COMPONENT
+  In here we create a list of cards components with the help of a eventsList Array of Objects prop
+*/
 <template>
     <div class="events-list-wrapper">
         <app-event-card
@@ -22,16 +26,9 @@ export default {
             },
             required:true
         }
-    },
-    data() {
-        return {
-        }
-    },
-    methods:{
     }
 }
 </script>
 
 <style lang="scss" scoped>
-
 </style>

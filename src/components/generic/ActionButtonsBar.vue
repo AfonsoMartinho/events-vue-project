@@ -1,3 +1,10 @@
+
+/*
+  WELCOME TO THE ACTION BUTTONS BAR COMPONENT
+  In here we create a bar with the main app action buttons
+  This bar can change from normal to edit state depending on the isEditing Boolean prop
+  We emit all the buttons click events back
+*/
 <template>
     <div class="action-buttons-bar-wrapper">
         <div v-show="!isEditing" class="normal-state bar">
@@ -64,7 +71,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/styles/main.scss';
 .bar{
     & *{
