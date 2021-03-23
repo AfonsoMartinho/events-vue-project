@@ -183,7 +183,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .card-wrapper{
     width: 100%;
     position: relative;

@@ -72,7 +72,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
 .bar{
     & *{
         margin-left: 10px; // adding some space between buttons

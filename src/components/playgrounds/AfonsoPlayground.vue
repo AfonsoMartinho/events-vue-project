@@ -101,8 +101,7 @@ export default {
 </script>
 
 
-<style lang="scss">
-@import '@/styles/generic.scss';
+<style lang="scss" scoped>
 
 
 .playground-wrapper{
