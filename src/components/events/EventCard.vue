@@ -234,7 +234,7 @@ export default {
             }
         }
         .action-buttons-wrapper{
-            width: 45%;
+            width: 55%;
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;

@@ -1,4 +1,3 @@
-
 /*
   WELCOME TO THE ACTION BUTTONS BAR COMPONENT
   In here we create a bar with the main app action buttons
