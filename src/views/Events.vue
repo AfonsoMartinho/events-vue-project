@@ -8,7 +8,7 @@
 <template>
     <div class="events-view-wrapper">
         <div class="events-top-wrapper">
-            <div class="text font-big">Next events</div>
+            <div class="text font-big">Next Events</div>
 
             <app-search-input
             class="search-input"
